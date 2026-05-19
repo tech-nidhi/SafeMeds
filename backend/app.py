@@ -6,14 +6,7 @@ from utils.groq_interaction import evaluate_interaction
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {
-    "origins": [
-        "http://localhost:5173",
-        "https://safemeds-frontend.vercel.app",
-        "https://safemedss.me",  # <- This is the one causing issues
-        "https://www.safemedss.me"  # <- This is likely what's missing
-    ]
-}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/check', methods=['POST'])
