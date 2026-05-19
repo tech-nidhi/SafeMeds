@@ -1,0 +1,24 @@
+# Python/Flask patterns
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+
+# Node/React patterns
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/.env*
+!frontend/.env.production
+frontend/.env.production
+
+# General/OS patterns
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

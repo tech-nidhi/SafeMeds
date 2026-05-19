@@ -1,0 +1,13 @@
+drug1,drug2,risk_level,notes
+Warfarin,Aspirin,High Risk,May increase bleeding risk due to additive anticoagulant effects.
+Paracetamol,Ibuprofen,Moderate Risk,Commonly used together but may increase gastrointestinal irritation.
+Amoxicillin,Metformin,Safe,No significant interactions reported.
+Atorvastatin,Clarithromycin,High Risk,Increased statin levels may lead to muscle toxicity.
+Losartan,Ibuprofen,Moderate Risk,May reduce antihypertensive effect of Losartan and harm kidneys.
+Digoxin,Furosemide,High Risk,Furosemide may increase risk of digoxin toxicity due to potassium loss.
+Metoprolol,Albuterol,Moderate Risk,May reduce bronchodilator effectiveness of albuterol.
+Sildenafil,Nitroglycerin,High Risk,Severe hypotension risk when combined.
+Amiodarone,Simvastatin,High Risk,May increase risk of statin-related muscle injury.
+Fluoxetine,Tramadol,High Risk,Risk of serotonin syndrome when combined.
+Omeprazole,Clopidogrel,Moderate Risk,Omeprazole reduces effectiveness of Clopidogrel via CYP2C19 inhibition
+Ibuprofen, Aspirin,High Risk,Increased risk of gastrointestinal bleeding when used together.
