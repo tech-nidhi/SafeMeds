@@ -87,11 +87,3 @@ npm run dev
 The frontend application will run locally at `http://localhost:5173`.
 
 ---
-
-## 👨‍💻 Team Roles
-| Name | Role |
-|------|------|
-| **Marka S Charan** [🔗 GitHub](https://github.com/MARKASCHARAN) • [🔗 LinkedIn](https://linkedin.com/in/markascharan) | Full Stack Developer, Integration |
-| **Dhrumin Upadhyay** [🔗 GitHub](https://github.com/dhrumin-upadhyay) • [🔗 LinkedIn](https://www.linkedin.com/in/dhrumin-upadhyay-98b021287/) | Machine Learning |
-| **Nidhi Thakore** [🔗 GitHub](https://github.com/nidhi-thakore) • [🔗 LinkedIn](https://www.linkedin.com/in/nidhi-thakore-10b9b825b/) | AWS Deployment, Domain Setup |
-| **Ayushi Majumdar** [🔗 GitHub](https://github.com/ayushi-majumdar) • [🔗 LinkedIn](https://www.linkedin.com/in/ayushi-majumdar-4318152a1/) | UI/UX & Frontend Designer |
