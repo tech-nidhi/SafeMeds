@@ -10,6 +10,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/check', methods=['POST'])
+@app.route('/check/', methods=['POST'])
 def check_route():
     data = request.get_json()
     meds = data.get("medications", [])
@@ -18,6 +19,7 @@ def check_route():
 
 
 @app.route('/groq', methods=['POST'])
+@app.route('/groq/', methods=['POST'])
 def get_groq_analysis():
     data = request.get_json()
 
@@ -42,6 +44,7 @@ def get_groq_analysis():
     return jsonify({"response": response})
 
 @app.route('/', methods=['GET'])
+@app.route('/index', methods=['GET'])
 def index():
     return jsonify({"message": "I'm alive"})
 
