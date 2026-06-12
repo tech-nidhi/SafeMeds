@@ -1,8 +1,17 @@
 import { useState } from 'react';
 
 const MED_SUGGESTIONS = [
-  'Paracetamol', 'Ibuprofen', 'Aspirin', 'Warfarin', 'Metformin',
-  'Amoxicillin', 'Atorvastatin', 'Losartan', 'Omeprazole', 'Ciprofloxacin'
+  'Albuterol', 'Allopurinol', 'Amlodipine', 'Amiodarone', 'Amoxicillin',
+  'Antacid', 'Aspirin', 'Atenolol', 'Atorvastatin', 'Azithromycin',
+  'Bisoprolol', 'Carbamazepine', 'Citalopram', 'Ciprofloxacin', 'Clarithromycin',
+  'Clopidogrel', 'Codeine', 'Cyclosporine', 'Diazepam', 'Digoxin',
+  'Doxycycline', 'Erythromycin', 'Fluconazole', 'Fluoxetine', 'Furosemide',
+  'Gentamicin', 'Glipizide', 'Ibuprofen', 'Insulin', 'Isotretinoin',
+  'Lansoprazole', 'Lisinopril', 'Lithium', 'Losartan', 'Metformin',
+  'Methotrexate', 'Metoprolol', 'Nitroglycerin', 'Omeprazole', 'Oral Contraceptive',
+  'Pantoprazole', 'Paracetamol', 'Phenytoin', 'Potassium', 'Prednisolone',
+  'Ramipril', 'Rosuvastatin', 'Sertraline', 'Sildenafil', 'Simvastatin',
+  'Spironolactone', 'Theophylline', 'Tramadol', 'Verapamil', 'Warfarin',
 ];
 
 const InputForm = ({ onSubmit }) => {

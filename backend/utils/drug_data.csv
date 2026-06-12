@@ -9,5 +9,71 @@ Metoprolol,Albuterol,Moderate Risk,May reduce bronchodilator effectiveness of al
 Sildenafil,Nitroglycerin,High Risk,Severe hypotension risk when combined.
 Amiodarone,Simvastatin,High Risk,May increase risk of statin-related muscle injury.
 Fluoxetine,Tramadol,High Risk,Risk of serotonin syndrome when combined.
-Omeprazole,Clopidogrel,Moderate Risk,Omeprazole reduces effectiveness of Clopidogrel via CYP2C19 inhibition
-Ibuprofen, Aspirin,High Risk,Increased risk of gastrointestinal bleeding when used together.
+Omeprazole,Clopidogrel,Moderate Risk,Omeprazole reduces effectiveness of Clopidogrel via CYP2C19 inhibition.
+Ibuprofen,Aspirin,High Risk,Increased risk of gastrointestinal bleeding when used together.
+Paracetamol,Ciprofloxacin,Safe,No clinically significant interaction reported.
+Amoxicillin,Ciprofloxacin,Moderate Risk,Combining two antibiotics may increase side effects and risk of resistance.
+Metformin,Ibuprofen,Moderate Risk,NSAIDs may impair renal function and affect metformin clearance.
+Atorvastatin,Amlodipine,Safe,No significant interaction; both commonly co-prescribed.
+Lisinopril,Potassium,High Risk,ACE inhibitors combined with potassium supplements may cause hyperkalemia.
+Warfarin,Ibuprofen,High Risk,NSAIDs increase bleeding risk significantly when combined with warfarin.
+Warfarin,Ciprofloxacin,High Risk,Ciprofloxacin inhibits warfarin metabolism raising bleeding risk.
+Warfarin,Paracetamol,Moderate Risk,High doses of paracetamol may enhance anticoagulant effect of warfarin.
+Sertraline,Tramadol,High Risk,Risk of serotonin syndrome; avoid combination.
+Sertraline,Ibuprofen,Moderate Risk,Increased risk of gastrointestinal bleeding when combined.
+Citalopram,Tramadol,High Risk,Risk of serotonin syndrome when combined.
+Fluoxetine,Warfarin,High Risk,Fluoxetine inhibits warfarin metabolism increasing bleeding risk.
+Omeprazole,Methotrexate,Moderate Risk,Omeprazole may increase methotrexate levels causing toxicity.
+Atenolol,Amlodipine,Safe,Commonly combined for hypertension; no major interaction.
+Atenolol,Insulin,Moderate Risk,Beta-blockers may mask hypoglycaemia symptoms in diabetic patients.
+Metoprolol,Verapamil,High Risk,Combined use may cause severe bradycardia or heart block.
+Amlodipine,Simvastatin,Moderate Risk,Amlodipine may increase simvastatin exposure increasing myopathy risk.
+Lisinopril,Ibuprofen,Moderate Risk,NSAIDs may reduce antihypertensive effect and worsen kidney function.
+Lisinopril,Spironolactone,High Risk,Combined use increases risk of dangerous hyperkalemia.
+Azithromycin,Warfarin,High Risk,Azithromycin may enhance anticoagulant effect of warfarin.
+Azithromycin,Amiodarone,High Risk,Both prolong QT interval increasing risk of fatal arrhythmia.
+Ciprofloxacin,Theophylline,High Risk,Ciprofloxacin inhibits theophylline metabolism causing toxicity.
+Ciprofloxacin,Antacid,Moderate Risk,Antacids reduce absorption of ciprofloxacin significantly.
+Metformin,Alcohol,High Risk,Alcohol increases risk of lactic acidosis with metformin.
+Insulin,Alcohol,High Risk,Alcohol potentiates hypoglycaemic effect of insulin.
+Glipizide,Ibuprofen,Moderate Risk,NSAIDs may enhance hypoglycaemic effect of sulfonylureas.
+Prednisolone,Ibuprofen,High Risk,Combined corticosteroid and NSAID use significantly increases GI bleeding risk.
+Prednisolone,Warfarin,Moderate Risk,Steroids may alter anticoagulant response to warfarin.
+Doxycycline,Antacid,Moderate Risk,Antacids reduce absorption of doxycycline.
+Doxycycline,Isotretinoin,High Risk,Combining tetracyclines with isotretinoin increases risk of intracranial hypertension.
+Methotrexate,Ibuprofen,High Risk,NSAIDs reduce renal clearance of methotrexate causing serious toxicity.
+Methotrexate,Aspirin,High Risk,Aspirin may increase methotrexate toxicity by reducing its excretion.
+Lithium,Ibuprofen,High Risk,NSAIDs increase lithium levels which can cause toxicity.
+Lithium,Furosemide,High Risk,Furosemide increases lithium reabsorption causing toxicity.
+Carbamazepine,Warfarin,High Risk,Carbamazepine induces warfarin metabolism reducing its anticoagulant effect.
+Carbamazepine,Oral Contraceptive,High Risk,Carbamazepine reduces effectiveness of oral contraceptives.
+Phenytoin,Warfarin,High Risk,Phenytoin may increase or decrease warfarin effect unpredictably.
+Phenytoin,Fluconazole,High Risk,Fluconazole inhibits phenytoin metabolism causing toxicity.
+Fluconazole,Simvastatin,High Risk,Fluconazole inhibits statin metabolism increasing myopathy risk.
+Fluconazole,Warfarin,High Risk,Fluconazole significantly enhances warfarin anticoagulant effect.
+Clarithromycin,Warfarin,High Risk,Clarithromycin inhibits warfarin metabolism increasing bleeding risk.
+Clarithromycin,Simvastatin,High Risk,Increased statin plasma levels leading to rhabdomyolysis risk.
+Simvastatin,Amlodipine,Moderate Risk,Amlodipine may increase simvastatin concentration increasing myopathy risk.
+Spironolactone,Potassium,High Risk,Combined use causes dangerous hyperkalemia.
+Furosemide,Gentamicin,High Risk,Both drugs are ototoxic and nephrotoxic; combination increases risk.
+Allopurinol,Amoxicillin,Moderate Risk,Increased risk of skin rash when used together.
+Allopurinol,Warfarin,High Risk,Allopurinol may inhibit warfarin metabolism enhancing anticoagulant effect.
+Codeine,Alcohol,High Risk,Additive CNS depression; risk of respiratory depression.
+Codeine,Diazepam,High Risk,Combined opioid and benzodiazepine use increases respiratory depression risk.
+Diazepam,Alcohol,High Risk,Additive CNS and respiratory depression.
+Diazepam,Omeprazole,Moderate Risk,Omeprazole inhibits diazepam metabolism increasing its sedative effect.
+Tramadol,Alcohol,High Risk,Increases CNS depression and seizure risk.
+Tramadol,Diazepam,High Risk,Combined use increases risk of CNS depression and respiratory failure.
+Amoxicillin,Warfarin,Moderate Risk,Antibiotics may reduce gut flora that produce vitamin K affecting warfarin levels.
+Ramipril,Potassium,High Risk,ACE inhibitors combined with potassium supplements may cause hyperkalemia.
+Ramipril,Ibuprofen,Moderate Risk,NSAIDs reduce antihypertensive effect and increase risk of renal impairment.
+Bisoprolol,Verapamil,High Risk,Combined use may cause severe bradycardia or heart block.
+Bisoprolol,Insulin,Moderate Risk,Beta-blockers may mask symptoms of hypoglycaemia.
+Rosuvastatin,Clarithromycin,Moderate Risk,Clarithromycin may increase rosuvastatin levels slightly.
+Rosuvastatin,Fluconazole,Moderate Risk,Fluconazole may increase rosuvastatin plasma concentrations.
+Lansoprazole,Clopidogrel,Moderate Risk,Lansoprazole inhibits CYP2C19 reducing clopidogrel activation.
+Pantoprazole,Clopidogrel,Safe,Pantoprazole has less CYP2C19 inhibition than omeprazole.
+Amlodipine,Cyclosporine,High Risk,Amlodipine may increase cyclosporine levels causing nephrotoxicity.
+Cyclosporine,Simvastatin,High Risk,Cyclosporine significantly increases statin levels causing rhabdomyolysis.
+Erythromycin,Warfarin,High Risk,Erythromycin inhibits warfarin metabolism increasing bleeding risk.
+Erythromycin,Simvastatin,High Risk,Erythromycin increases statin plasma levels increasing myopathy risk.
