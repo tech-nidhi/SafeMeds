@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const MED_SUGGESTIONS = [
   'Albuterol', 'Allopurinol', 'Amlodipine', 'Amiodarone', 'Amoxicillin',
@@ -15,10 +15,10 @@ const MED_SUGGESTIONS = [
 ];
 
 const InputForm = ({ onSubmit }) => {
-  const [inputValue, setInputValue] = useState('');
-  const [filtered, setFiltered] = useState([]);
+  const [selectedMeds, setSelectedMeds] = useState([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [search, setSearch] = useState('');
   const [error, setError] = useState('');
-  const [isListening, setIsListening] = useState(false);
 
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
@@ -27,18 +27,43 @@ const InputForm = ({ onSubmit }) => {
   const [pregnant, setPregnant] = useState('Unknown');
   const [allergies, setAllergies] = useState('');
 
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+        setSearch('');
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const filteredMeds = MED_SUGGESTIONS.filter((med) =>
+    med.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const toggleMed = (med) => {
+    setSelectedMeds((prev) =>
+      prev.includes(med) ? prev.filter((m) => m !== med) : [...prev, med]
+    );
+    setError('');
+  };
+
+  const removeMed = (med) => {
+    setSelectedMeds((prev) => prev.filter((m) => m !== med));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const meds = inputValue
-      .split(',')
-      .map((m) => m.trim())
-      .filter(Boolean);
 
     const condList = conditions.split(',').map((c) => c.trim()).filter(Boolean);
     const allergyList = allergies.split(',').map((a) => a.trim()).filter(Boolean);
 
-    if (meds.length < 2) {
-      setError('Enter at least 2 medications');
+    if (selectedMeds.length < 2) {
+      setError('Select at least 2 medications');
       return;
     }
     if (!age || !gender) {
@@ -48,56 +73,15 @@ const InputForm = ({ onSubmit }) => {
 
     setError('');
 
-    const payload = {
-      medications: meds,
+    onSubmit({
+      medications: selectedMeds,
       age: parseInt(age, 10),
       gender,
       reason,
       conditions: condList,
       pregnant,
-      allergies: allergyList
-    };
-
-    onSubmit(payload);
-  };
-
-  const handleChange = (e) => {
-    const val = e.target.value;
-    setInputValue(val);
-
-    const lastEntry = val.split(',').pop().trim().toLowerCase();
-    const suggestions = MED_SUGGESTIONS.filter((med) =>
-      med.toLowerCase().startsWith(lastEntry)
-    );
-    setFiltered(lastEntry ? suggestions : []);
-  };
-
-  const handleSuggestionClick = (med) => {
-    const parts = inputValue.split(',');
-    parts[parts.length - 1] = ` ${med}`;
-    const newInput = parts.join(',').replace(/^,/, '');
-    setInputValue(newInput);
-    setFiltered([]);
-  };
-
-  const startVoiceInput = () => {
-    if (!('webkitSpeechRecognition' in window)) {
-      alert('Voice input not supported.');
-      return;
-    }
-    const rec = new window.webkitSpeechRecognition();
-    rec.lang = 'en-US';
-    rec.continuous = false;
-    rec.interimResults = false;
-    setIsListening(true);
-    rec.start();
-
-    rec.onresult = (e) => {
-      const transcript = e.results[0][0].transcript;
-      setInputValue((prev) => (prev ? `${prev}, ${transcript}` : transcript));
-      setIsListening(false);
-    };
-    rec.onerror = () => setIsListening(false);
+      allergies: allergyList,
+    });
   };
 
   return (
@@ -105,44 +89,92 @@ const InputForm = ({ onSubmit }) => {
       onSubmit={handleSubmit}
       className="bg-white/5 border border-white/20 rounded-xl p-6 mb-4 shadow-inner relative space-y-4"
     >
+      {/* Medication multi-select */}
       <label className="block text-lime-300 text-sm font-medium">
-        💊 Medications (comma-separated)
+        💊 Select Medications (choose at least 2)
       </label>
 
-      <div className="relative">
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleChange}
-          placeholder="e.g., Paracetamol, Ibuprofen"
-          className="w-full px-4 py-3 rounded-md bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-400"
-        />
-        <button
-          type="button"
-          onClick={startVoiceInput}
-          className={`absolute right-2 top-2 px-3 py-1 rounded-md border border-lime-400 text-lime-400 hover:bg-lime-400 hover:text-black transition ${
-            isListening ? 'animate-pulse bg-lime-500 text-black' : ''
-          }`}
+      <div className="relative" ref={dropdownRef}>
+        {/* Trigger box */}
+        <div
+          onClick={() => setDropdownOpen((prev) => !prev)}
+          className="w-full min-h-[46px] px-4 py-2 rounded-md bg-white/10 text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-lime-400 flex flex-wrap gap-2 items-center"
         >
-          🎤
-        </button>
-
-        {filtered.length > 0 && (
-          <ul className="absolute z-10 bg-black/90 border border-white/20 text-white w-full mt-2 rounded-lg max-h-48 overflow-y-auto">
-            {filtered.map((med, idx) => (
-              <li
-                key={idx}
-                onClick={() => handleSuggestionClick(med)}
-                className="px-4 py-2 hover:bg-lime-500 hover:text-black cursor-pointer transition"
+          {selectedMeds.length === 0 ? (
+            <span className="text-gray-400 text-sm">Click to select medications...</span>
+          ) : (
+            selectedMeds.map((med) => (
+              <span
+                key={med}
+                className="flex items-center gap-1 bg-lime-400 text-black text-xs font-semibold px-2 py-1 rounded-full"
               >
                 {med}
-              </li>
-            ))}
-          </ul>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); removeMed(med); }}
+                  className="ml-1 hover:text-red-700 font-bold leading-none"
+                >
+                  ×
+                </button>
+              </span>
+            ))
+          )}
+          <span className="ml-auto text-gray-400 text-xs">{dropdownOpen ? '▲' : '▼'}</span>
+        </div>
+
+        {/* Dropdown list */}
+        {dropdownOpen && (
+          <div className="absolute z-20 w-full mt-1 bg-gray-900 border border-white/20 rounded-lg shadow-xl">
+            {/* Search inside dropdown */}
+            <div className="p-2 border-b border-white/10">
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search medication..."
+                autoFocus
+                className="w-full px-3 py-1.5 rounded-md bg-white/10 text-white placeholder-gray-400 text-sm focus:outline-none focus:ring-1 focus:ring-lime-400"
+              />
+            </div>
+            <ul className="max-h-56 overflow-y-auto">
+              {filteredMeds.length === 0 ? (
+                <li className="px-4 py-3 text-gray-400 text-sm">No medications found</li>
+              ) : (
+                filteredMeds.map((med) => {
+                  const isSelected = selectedMeds.includes(med);
+                  return (
+                    <li
+                      key={med}
+                      onClick={() => toggleMed(med)}
+                      className={`px-4 py-2.5 flex items-center gap-3 cursor-pointer text-sm transition
+                        ${isSelected
+                          ? 'bg-lime-500/20 text-lime-300'
+                          : 'text-white hover:bg-white/10'
+                        }`}
+                    >
+                      <span className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0
+                        ${isSelected ? 'bg-lime-400 border-lime-400' : 'border-gray-500'}`}
+                      >
+                        {isSelected && (
+                          <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                      </span>
+                      {med}
+                    </li>
+                  );
+                })
+              )}
+            </ul>
+            <div className="p-2 border-t border-white/10 text-xs text-gray-400 text-right">
+              {selectedMeds.length} selected
+            </div>
+          </div>
         )}
       </div>
 
-      
+      {/* Age & Gender */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <input
           type="number"
